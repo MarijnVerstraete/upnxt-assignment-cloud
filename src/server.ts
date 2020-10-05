@@ -13,8 +13,6 @@ app.post("/compute", (request, response) => {
 
   const score = compute(game);
 
-  // console.log("Score thats computed= " + score);
-  //everything ok, return the score in json format
   response.status(200);
   response.json({ "score": score });
 });
