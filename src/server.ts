@@ -8,12 +8,15 @@ const app = express();
 app.use(express.json());
 
 app.post("/compute", (request, response) => {
-  const game:Game = request.body.game;
+  const game: Game = request.body.game;
   // TODO: Validate input
 
   const score = compute(game);
-  // TODO: Return response
 
+  // console.log("Score thats computed= " + score);
+  //everything ok, return the score in json format
+  response.status(200);
+  response.json({ "score": score });
 });
 
 export const createServer = () => http.createServer(app);
