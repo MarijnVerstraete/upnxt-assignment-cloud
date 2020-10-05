@@ -24,7 +24,10 @@ export function compute(game: Game): number {
     }
   }
   //process last frame
-
+  let lastFrame:LastFrame = game[9];
+  for ( let number of lastFrame ) {
+    score += number;
+  }
 
   return score;
 }
