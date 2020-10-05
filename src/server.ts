@@ -11,8 +11,8 @@ app.post("/compute", (request, response) => {
   // TODO: Validate input
 
   const score = compute(game);
-
   // TODO: Return response
+
 });
 
 export const createServer = () => http.createServer(app);
