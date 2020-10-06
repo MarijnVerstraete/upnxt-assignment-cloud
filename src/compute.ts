@@ -4,16 +4,17 @@ export function compute(game: Game): number {
   let score:number = 0;
 
   //procces first 9 frames
-  for (var i = 0; i < 9; i++) {
+  for ( let i = 0 ; i < 9 ; i++ ) {
     let currentFrame = game[i];
     let nextFrame = game[i+1];
     score += currentFrame[0] + currentFrame[1];
-    if( isStrike( currentFrame ) ) {
+
+    if ( isStrike(currentFrame) ) {
       //count the nextframe
       score += nextFrame[0] + nextFrame[1];
 
       //if the next is also a strike, count the second next frame first roll
-      //check if the next frame is not length 3, so it doesnt give nulpointer searching for game index 10
+      //check if the next frame is not length 3, so it doesnt give nullpointer searching for game index 10
       if ( isStrike(nextFrame) && nextFrame.length < 3 ) {
         score += game[i+2][0];
       }
@@ -23,7 +24,7 @@ export function compute(game: Game): number {
       score += nextFrame[0];
     }
   }
-  //process last frame
+
   let lastFrame:LastFrame = game[9];
   for ( let number of lastFrame ) {
     score += number;
@@ -37,5 +38,5 @@ function isStrike (frame: Frame | LastFrame): boolean {
 }
 
 function isSpare (frame: Frame | LastFrame): boolean {
-  return ( frame[0] + frame[1] ) === 10;
+  return frame[0] !== 10 && ( frame[0] + frame[1] ) === 10;
 }
